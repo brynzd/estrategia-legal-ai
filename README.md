@@ -6,7 +6,6 @@
 
 ![UI](https://img.shields.io/badge/UI-Streamlit-FF4B4B)
 ![LLM](https://img.shields.io/badge/LLM-Claude%20%7C%20Groq-8A2BE2)
-![Tests](https://img.shields.io/badge/tests-27%20passed-brightgreen)
 
 
 ## Arquitectura
@@ -66,7 +65,7 @@ estrategia-legal-ai/
 │   │   └── third_parties.py  # Paso 5 — vinculación de terceros
 │   └── memo/
 │       ├── builder.py        # Paso 6 — ensamblado del memorando
-│       └── validator.py      # Paso 7 — validación de citas (anti-alucinación) ✅
+│       └── validator.py      # Paso 7 — validación de citas (anti-alucinación) 
 └── tests/                  # 27 tests (sin red ni API)
 ```
 
@@ -108,19 +107,6 @@ streamlit run app.py
 ```bash
 pytest
 ```
-## Estado actual
-
-| Fase | Descripción | Estado |
-|------|-------------|--------|
-| 0 | Setup, venv, extracción PDF, UI shell | ✅ |
-| 1 | Corpus loader, RAG (vector store numpy), ingesta, recuperación | ✅ mecánica verificada |
-| 2 | 6 pasos de razonamiento + cliente LLM (Claude/Groq) | ✅ verificados con LLM simulado |
-| 3 | Memorando + validación de citas | 🔲 siguiente |
-| 4 | UI completa + panel de trazabilidad | 🔲 |
-| 5 | Generalizar a producto y médica | 🔲 |
-| 6 | Video, deploy, README final | 🔲 |
-
-**Para activar el pipeline real:** poner `ANTHROPIC_API_KEY` en `.env`, cargar el corpus jurídico en `corpus/` y agregar la demanda de muestra en `samples/`.
 
 ---
 
