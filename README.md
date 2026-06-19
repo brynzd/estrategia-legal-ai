@@ -62,11 +62,12 @@ estrategia-legal-ai/
 │   │   ├── causation.py      # Paso 5 — nexo causal
 │   │   ├── exoneration.py    # Paso 5 — exoneración + concurrencia de culpas
 │   │   ├── damages.py        # Paso 5 — perjuicio + contraste SOAT
-│   │   └── third_parties.py  # Paso 5 — vinculación de terceros
+│   │   ├── third_parties.py  # Paso 5 — vinculación de terceros
+│   │   └── analyze.py        # Paso 4 + orquestación — recupera por issue y encadena los pasos
 │   └── memo/
 │       ├── builder.py        # Paso 6 — ensamblado del memorando
 │       └── validator.py      # Paso 7 — validación de citas (anti-alucinación) 
-└── tests/                  # 27 tests (sin red ni API)
+└── tests/                  # 46 tests (sin red ni API)
 ```
 
 ##  Stack
@@ -98,7 +99,10 @@ pip install -r requirements.txt
 # 3. Claves de API (se leen de .env; .env está en .gitignore)
 cp .env.example .env               # editar y poner ANTHROPIC_API_KEY
 
-# 4. UI
+# 4. Índice del corpus (primera vez; o usa el botón de la barra lateral de la app)
+python -m src.rag.ingest
+
+# 5. UI
 streamlit run app.py
 ```
 
@@ -107,6 +111,46 @@ streamlit run app.py
 ```bash
 pytest
 ```
+
+## Estado del proyecto
+
+| Fase | Estado |
+|------|--------|
+| 0 · Setup | ✅ |
+| 1 · Corpus + recuperación (código) | ✅ · corpus real pendiente de los abogados |
+| 2 · Pasos de razonamiento | ✅ |
+| 3 · Memorando + validación de citas | ✅ |
+| 4 · UI + panel de trazabilidad | ✅ |
+| 5 · Generalizar (producto, médica) | ✅ código agnóstico al tipo · falta el contenido jurídico |
+| 6 · Entregables (video, deploy, deck) | ⏳ en manos del equipo / abogados |
+
+El pipeline está completo de extremo a extremo y es agnóstico al tipo de hecho.
+Lo que falta para resultados reales es **contenido que autoran los abogados**
+(Restricción dura #5): normas y jurisprudencia en `corpus/`, `regimen_table.yaml`
+diligenciado y un PDF de muestra en `samples/`.
+
+## Decisiones de diseño
+
+- **Corpus cerrado + validación de citas = anti-alucinación.** El sistema cita solo
+  `id` presentes en `corpus/`; el validador (`memo/validator.py`) parsea cada
+  `[FUENTE: <id>]` y marca como ERROR toda cita huérfana. Es el diferenciador frente
+  a un LLM genérico.
+- **Memorando híbrido.** El código decide la estructura y el orden por solidez
+  (`rubrica_solidez.md`); el LLM solo redacta cada sección con su propio material,
+  sin introducir citas nuevas.
+- **Pipeline secuencial y trazable**, no caja negra: cada paso registra entrada y
+  salida (`trace.py`) para el panel de trazabilidad.
+- **El código no decide doctrina:** mapea hechos a las reglas que autoran los
+  abogados y exige cita (Restricción dura #5).
+
+## Límites conocidos
+
+- Depende del corpus que carguen los abogados; con el corpus vacío la app arranca,
+  avisa y no produce resultados útiles.
+- Embeddings reales (`sentence-transformers`) pendientes de descarga; el vector
+  store usa numpy porque `chroma-hnswlib` no tiene wheel para Python 3.14.
+- Es un documento de **apoyo**, no asesoría legal: el abogado valida cada cita y
+  conclusión contra la fuente oficial.
 
 ---
 

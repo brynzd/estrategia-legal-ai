@@ -10,6 +10,8 @@ Cada submódulo es una función aislada y testeable sobre la muestra de tránsit
     damages         Paso 5 — daño emergente y lucro cesante; contraste con SOAT;
                     pruebas de descargo concretas.
     third_parties   Paso 5 — llamamiento en garantía / denuncia del pleito.
+    analyze         Paso 4 + orquestación — recupera del corpus por cada issue y
+                    encadena los pasos anteriores dejando una traza por paso.
 
 Contrato común (Restricciones duras #1 y #3): cada paso cita SOLO lo recuperado
 con formato `[FUENTE: <id>]` y responde "No encontrado en el corpus" si la
