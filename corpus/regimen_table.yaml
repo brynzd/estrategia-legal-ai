@@ -1,0 +1,46 @@
+# =============================================================================
+# regimen_table.yaml
+# Mapa: tipo de hecho -> régimen propuesto -> normas -> matiz doctrinal.
+#
+# >>> PENDIENTE DE VALIDACIÓN JURÍDICA por los abogados. <<<
+# Esto es un ANDAMIAJE de formato, NO contenido jurídico verificado.
+#
+# Reglas:
+#   - El código mapea el `tipo_hecho` a estas entradas y EXIGE cita; no decide
+#     doctrina (Restricción dura #5).
+#   - Cada id en `normas` y `respaldo` DEBE existir como fuente en corpus/.
+#   - `regimen` admite: subjetiva_culpa_probada | subjetiva_culpa_presunta | objetiva
+#   - `matiz_doctrinal`: reconocer la discusión cuando exista; no afirmar en seco.
+#
+# Estructura por entrada:
+#   <tipo_hecho>:
+#     regimen: <uno de los valores admitidos>
+#     normas: [<id_corpus>, ...]          # p. ej. [cc_2356]
+#     matiz_doctrinal: <texto>
+#     respaldo: [<id_jurisprudencia>, ...] # ids de sentencias en corpus/
+# =============================================================================
+
+regimenes:
+  transito:
+    regimen: <PENDIENTE>
+    normas: []            # ids que deben existir en corpus/ (p. ej. cc_2356)
+    matiz_doctrinal: <PENDIENTE - describir la discusión doctrinal o jurisprudencial>
+    respaldo: []          # ids de jurisprudencia en corpus/
+
+  actividad_peligrosa:
+    regimen: <PENDIENTE>
+    normas: []
+    matiz_doctrinal: <PENDIENTE>
+    respaldo: []
+
+  medica:
+    regimen: <PENDIENTE>
+    normas: []
+    matiz_doctrinal: <PENDIENTE>
+    respaldo: []
+
+  producto:
+    regimen: <PENDIENTE>
+    normas: []
+    matiz_doctrinal: <PENDIENTE>
+    respaldo: []
