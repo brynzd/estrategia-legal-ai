@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Empaquetado / build
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Secretos y configuración local  (Claves de API)
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+
+# Artefactos generados en runtime (se regeneran; no van al repo)
+# Índice vectorial persistente de ChromaDB
+data/
+chroma/
+*.chroma/
+.chromadb/
+
+# Caché de modelos de sentence-transformers / HuggingFace
+.cache/
+models/
+
+# Memorandos y salidas generadas por el pipeline
+output/
+outputs/
+*.memo.md
+
+# Logs y trazas
+logs/
+*.log
+
+# Herramientas de test / calidad
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Editores / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS / Windows
+.DS_Store
+.AppleDouble
+Thumbs.db
+
+# Claude
+CLAUDE.md
+PLAN.md

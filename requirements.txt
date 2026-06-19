@@ -1,0 +1,26 @@
+# EstrategIA Legal — dependencias (Python 3.11+)
+# Instalar dentro de un venv:  pip install -r requirements.txt
+# Stack local-first, costo ≈ 0 (embeddings y vector store corren en local).
+
+
+# Extracción de PDF (Paso 1)
+PyMuPDF>=1.24            # import fitz; texto plano de la demanda
+pdfplumber>=0.11         # solo si aparecen tablas problemáticas
+
+# Recuperación RAG (corpus + embeddings + vector store)
+sentence-transformers>=3.0   # embeddings locales (e5-large / bge-m3)
+chromadb>=0.5                # vector store persistente en disco
+
+# LLM de razonamiento (parametrizable Claude <-> Groq)
+anthropic>=0.40         # cliente Claude API (por defecto)
+groq>=0.11              # alternativa open para el demo en vivo post-evento
+
+# UI
+streamlit>=1.38
+
+# Utilidades
+pyyaml>=6.0             # leer corpus/regimen_table.yaml y front-matter
+python-dotenv>=1.0      # cargar claves desde .env
+
+# Desarrollo / tests
+pytest>=8.0
