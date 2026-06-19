@@ -112,38 +112,7 @@ streamlit run app.py
 pytest
 ```
 
-## Estado del proyecto
-
-| Fase | Estado |
-|------|--------|
-| 0 · Setup | ✅ |
-| 1 · Corpus + recuperación (código) | ✅ · corpus real pendiente de los abogados |
-| 2 · Pasos de razonamiento | ✅ |
-| 3 · Memorando + validación de citas | ✅ |
-| 4 · UI + panel de trazabilidad | ✅ |
-| 5 · Generalizar (producto, médica) | ✅ código agnóstico al tipo · falta el contenido jurídico |
-| 6 · Entregables (video, deploy, deck) | ⏳ en manos del equipo / abogados |
-
-El pipeline está completo de extremo a extremo y es agnóstico al tipo de hecho.
-Lo que falta para resultados reales es **contenido que autoran los abogados**
-(Restricción dura #5): normas y jurisprudencia en `corpus/`, `regimen_table.yaml`
-diligenciado y un PDF de muestra en `samples/`.
-
-## Decisiones de diseño
-
-- **Corpus cerrado + validación de citas = anti-alucinación.** El sistema cita solo
-  `id` presentes en `corpus/`; el validador (`memo/validator.py`) parsea cada
-  `[FUENTE: <id>]` y marca como ERROR toda cita huérfana. Es el diferenciador frente
-  a un LLM genérico.
-- **Memorando híbrido.** El código decide la estructura y el orden por solidez
-  (`rubrica_solidez.md`); el LLM solo redacta cada sección con su propio material,
-  sin introducir citas nuevas.
-- **Pipeline secuencial y trazable**, no caja negra: cada paso registra entrada y
-  salida (`trace.py`) para el panel de trazabilidad.
-- **El código no decide doctrina:** mapea hechos a las reglas que autoran los
-  abogados y exige cita (Restricción dura #5).
-
-## Límites conocidos
+## Límites
 
 - Depende del corpus que carguen los abogados; con el corpus vacío la app arranca,
   avisa y no produce resultados útiles.
