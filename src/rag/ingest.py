@@ -97,3 +97,9 @@ def build_index(
     embeddings = np.asarray(embed_fn(textos))
     NumpyVectorStore(embeddings, chunks).save(Path(index_dir))
     return len(chunks)
+
+
+if __name__ == "__main__":  # pragma: no cover - utilidad de línea de comandos
+    # Construye el índice del corpus configurado:  python -m src.rag.ingest
+    n = build_index(config.CORPUS_DIR, config.INDEX_DIR)
+    print(f"Índice construido: {n} fragmentos en {config.INDEX_DIR}")
