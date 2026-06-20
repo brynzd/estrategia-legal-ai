@@ -1,4 +1,6 @@
-# EstrategIA Legal — dependencias (Python 3.11+)
+# EstrategIA Legal — dependencias
+# Python 3.11–3.13 (recomendado 3.12). En 3.14 aún no hay wheel de torch /
+# sentence-transformers, necesarios para los embeddings locales.
 # Instalar dentro de un venv:  pip install -r requirements.txt
 # Stack local-first, costo ≈ 0 (embeddings y vector store corren en local).
 
@@ -8,8 +10,11 @@ PyMuPDF>=1.24            # import fitz; texto plano de la demanda
 pdfplumber>=0.11         # solo si aparecen tablas problemáticas
 
 # Recuperación RAG (corpus + embeddings + vector store)
+numpy>=1.26                  # vector store local (coseno) y operaciones de embeddings
 sentence-transformers>=3.0   # embeddings locales (e5-large / bge-m3)
-chromadb>=0.5                # vector store persistente en disco
+# chromadb NO se usa: el vector store es numpy local (src/rag/vector_store.py),
+# elegido porque chroma-hnswlib no tiene wheel para Python reciente. Reactivar
+# solo si se migra explícitamente a ChromaDB.
 
 # LLM de razonamiento (parametrizable Claude <-> Groq)
 anthropic>=0.40         # cliente Claude API (por defecto)

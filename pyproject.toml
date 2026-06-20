@@ -2,7 +2,7 @@
 name = "estrategia-legal-ai"
 version = "0.1.0"
 description = "Apoyo a la decisión defensiva en Responsabilidad Civil Extracontractual (Colombia), trazable y con corpus cerrado."
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"
 
 [tool.pytest.ini_options]
 # Permite `from src...` en los tests sin instalar el paquete.

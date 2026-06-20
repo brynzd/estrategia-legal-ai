@@ -72,3 +72,9 @@ Thumbs.db
 # Claude
 CLAUDE.md
 PLAN.md
+
+# Demandas con DATOS PERSONALES reales — NO publicar en repo público (Ley 1581/2012).
+# Por defecto se ignoran los PDF de samples/; la demanda ficticia de muestra se
+# versiona explícitamente con la excepción de abajo.
+samples/*.pdf
+!samples/demanda_transito_muestra.pdf
