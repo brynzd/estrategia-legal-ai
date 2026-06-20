@@ -20,27 +20,48 @@
 #     respaldo: [<id_jurisprudencia>, ...] # ids de sentencias en corpus/
 # =============================================================================
 
+# Diligenciado a partir del material del reto (PDF). PENDIENTE de validación final
+# por los abogados, en especial el régimen de "producto".
 regimenes:
   transito:
-    regimen: <PENDIENTE>
-    normas: []            # ids que deben existir en corpus/ (p. ej. cc_2356)
-    matiz_doctrinal: <PENDIENTE - describir la discusión doctrinal o jurisprudencial>
-    respaldo: []          # ids de jurisprudencia en corpus/
+    regimen: objetiva
+    normas: [cc_2356, ley769_2002]
+    matiz_doctrinal: >-
+      Los accidentes de tránsito suelen analizarse como actividad peligrosa bajo el
+      artículo 2356 del Código Civil, en régimen objetivo: la discusión se concentra
+      en el daño, la actividad peligrosa y el nexo causal, no en la culpa. Son
+      frecuentes la concurrencia de culpas, la culpa exclusiva de la víctima y la
+      intervención de aseguradoras (Ley 769 de 2002). Validar por los abogados.
+    respaldo: []          # añadir id de jurisprudencia CSJ cuando se cargue su holding
 
   actividad_peligrosa:
-    regimen: <PENDIENTE>
-    normas: []
-    matiz_doctrinal: <PENDIENTE>
+    regimen: objetiva
+    normas: [cc_2356]
+    matiz_doctrinal: >-
+      Actividades que por su naturaleza generan riesgos superiores a los normales
+      (conducción, maquinaria pesada, industria, sustancias peligrosas). Se analizan
+      bajo el artículo 2356 en clave objetiva; la defensa se centra en el daño, el
+      nexo causal y las causales de exoneración. Validar por los abogados.
     respaldo: []
 
   medica:
-    regimen: <PENDIENTE>
-    normas: []
-    matiz_doctrinal: <PENDIENTE>
+    regimen: subjetiva_culpa_probada
+    normas: [cc_2341, ley23_1981, ley1751_2015]
+    matiz_doctrinal: >-
+      La responsabilidad médica suele analizarse como subjetiva: debe probarse una
+      actuación contraria a la lex artis (error o incumplimiento de protocolos). La
+      Ley 23 de 1981 (ética médica) y la Ley 1751 de 2015 (salud como derecho
+      fundamental) son el marco. En ciertos supuestos puede discutirse la culpa
+      presunta. Validar por los abogados.
     respaldo: []
 
   producto:
-    regimen: <PENDIENTE>
-    normas: []
-    matiz_doctrinal: <PENDIENTE>
+    regimen: <PENDIENTE - el material del reto no fija el régimen; validar por los abogados>
+    normas: [ley1480_2011]
+    matiz_doctrinal: >-
+      Daños por productos defectuosos regulados por los artículos 19 a 26 de la Ley
+      1480 de 2011 (Estatuto del Consumidor). El análisis se centra en el defecto
+      (fabricación, diseño o información) y en la relación entre el defecto y el
+      daño; es frecuente la vinculación de fabricantes, distribuidores e
+      importadores. El régimen específico debe confirmarlo el equipo jurídico.
     respaldo: []
